@@ -4,12 +4,18 @@ from Options import EnumOptions, EnumVeicleTypes, EnumStatus
 from menu import menu
 from maintenance import register 
 
+Options = {
+    EnumOptions.Register: register, 
+    EnumOptions.Alter: alter,
+    EnumOptions.Perform = perform,
+    EnumOptions.Finalize = finalize,
+    EnumOptions.Report = report,
+    EnumOptions.Close = close
+}
+
 def main():
     while True:
         maintenances = []
-        Options = {
-            EnumOptions.Register: register, 
-        }
         option:EnumOptions = menu()
         if option == EnumOptions.Close: 
             break
