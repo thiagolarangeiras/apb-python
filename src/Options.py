@@ -37,5 +37,5 @@ class EnumStatus(Enum):
     #         "entryDate": datetime(),
     #         "exitDate?": datetime(),
     #         "status": EnumStatus()
-    #     }
+    #     },
     # ]
