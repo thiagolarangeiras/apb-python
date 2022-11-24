@@ -47,5 +47,71 @@ def register(maintenances)->dict:
             print("\nCadastro Realizado com sucesso!\n")
             break
         except:
-            print("\nAviso dados invalidos no ultimo campo inserido!\n")    
-    return newRegister
+            print("\nAviso dados invalidos no ultimo campo inserido!\n")     
+    maintenances.append(newRegister)
+
+def alter():
+    print("alterar")
+
+def perform(maintenances):
+    # Buscar manutenção por cpf
+    cpfSearch = input('\nCPF do cliente: ')
+
+    maintenancesFounded = [] # manutenções do cliente
+
+    print('\nManutenções encontradas:')
+    for maintenance in maintenances:
+        if maintenance['cpf'] == cpfSearch:
+            print(maintenance)
+            maintenancesFounded.append(maintenance)
+        
+    # Verificando a quantidade de manutenções encontradas
+    if len(maintenancesFounded) == 0:
+        print('\nNão foram encontradas manutenções no CPF informado.\n')
+        return
+    elif len(maintenancesFounded) > 1:
+        # Escolha da manutenção pelo id 
+        maintenanceID = input('\nID da manutenção que deseja realizar: ')
+    else:
+        maintenanceID = maintenancesFounded[0]['idMaintenance']
+        
+    # Iniciando a manutenção
+    for index in range(len(maintenances)):
+        if maintenances[index]['idMaintenance'] == maintenanceID:
+            maintenances[index]['status'] = EnumStatus.onMaintenance
+            print(f'\nA manutenção (id:{maintenanceID}) está sendo iniciada!\n')
+    
+
+def finalize(maintenances):
+     # Buscar manutenção por cpf
+    cpfSearch = input('\nCPF do cliente: ')
+
+    maintenancesFounded = [] # manutenções do cliente
+
+    print('\nManutenções encontradas:')
+    for maintenance in maintenances:
+        if maintenance['cpf'] == cpfSearch and maintenance['status'] == EnumStatus.onMaintenance:
+            print(maintenance)
+            maintenancesFounded.append(maintenance)
+            
+    # Verificando a quantidade de manutenções encontradas
+    if len(maintenancesFounded) == 0:
+        print('\nNão foram encontradas manutenções já iniciadas no CPF informado.\n')
+        return
+    elif len(maintenancesFounded) > 1:
+        # Escolha da manutenção pelo id 
+        maintenanceID = input('\nID da manutenção que deseja finalizar: ')
+    else:
+        maintenanceID = maintenancesFounded[0]['idMaintenance']
+        
+    # Finalizando a manutenção
+    for index in range(len(maintenances)):
+        if maintenances[index]['idMaintenance'] == maintenanceID:
+            maintenances[index]['status'] = EnumStatus.onMaintenance
+            maintenances[index]["exitDate?"] = datetime.now()
+            durationTime = maintenances[index]["entryDate"] - maintenances[index]['exitDate?']
+            print(f'\nA manutenção (id:{maintenanceID}) foi finalizada com sucesso! Ela durou cerca de {durationTime} dias\n')
+    
+
+def report():
+    print("relatorio")

@@ -2,16 +2,9 @@
 import sys
 from Options import EnumOptions, EnumVeicleTypes, EnumStatus   
 from menu import menu
-from maintenance import register 
+from maintenance import register, alter, perform, finalize, report
 
-def alter():
-    print("alterar")
-def perform():
-    print("realizar")
-def finalize():
-    print("finalizar")
-def report():
-    print("relatorio")
+
 
 
 Options = {
@@ -28,8 +21,6 @@ def main():
         option:EnumOptions = menu()
         if option == EnumOptions.Close: 
             break
-        a = Options[option](maintenances)
-        maintenances.append(a)
         print(maintenances)
 
 if __name__ == "__main__":
