@@ -2,14 +2,11 @@
 import sys
 from Options import EnumOptions, EnumVeicleTypes, EnumStatus   
 from menu import menu
-from maintenance import register 
+from models.maintenance import register 
+from models.pf_maintenance import perform
+from models.fl_maintenance import finalize
+from models.al_maintenance import alter
 
-def alter():
-    print("alterar")
-def perform():
-    print("realizar")
-def finalize():
-    print("finalizar")
 def report():
     print("relatorio")
 
@@ -23,14 +20,12 @@ Options = {
 }
 
 def main():
-    maintenances = []
     while True:
         option:EnumOptions = menu()
         if option == EnumOptions.Close: 
             break
-        a = Options[option](maintenances)
-        maintenances.append(a)
-        print(maintenances)
+        Options[option]()
+       
 
 if __name__ == "__main__":
     #print("Argumentos de inicialização passados:", sys.argv[1:])
