@@ -11,6 +11,7 @@ def report():
     print("relatorio")
 
 
+
 Options = {
     EnumOptions.Register: register, 
     EnumOptions.Alter: alter,
@@ -26,6 +27,7 @@ def main():
             break
         Options[option]()
        
+
 
 if __name__ == "__main__":
     #print("Argumentos de inicialização passados:", sys.argv[1:])
