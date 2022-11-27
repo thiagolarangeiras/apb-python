@@ -11,7 +11,6 @@ def report():
     print("relatorio")
 
 
-
 Options = {
     EnumOptions.Register: register, 
     EnumOptions.Alter: alter,

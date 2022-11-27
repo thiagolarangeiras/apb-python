@@ -18,7 +18,7 @@ def finalize():
         elif maintenance_count > 1 and st == str([EnumStatus.onMaintenance]) :
             print("\nEscolha um id:")
             for maintenance_list in maintenance_cpf:
-             print("\tCpf: {} / Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id)) 
+             print("\t|Cpf: {} | Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id)) 
             id = int(input("Id: "))
             fl_manutention(cpf,id)
             break
@@ -30,7 +30,7 @@ def fl_manutention(cpf,id):
     maintenances = manutentions.query.filter_by(cpf=cpf,status=str([EnumStatus.onMaintenance]))   
    
     for maintenance in maintenances:
-        if maintenance.cpf == cpf or maintenance.id == id:
+        if maintenance.cpf == cpf and maintenance.id == id:
             maintenance.status = str([EnumStatus.finished])
             maintenance.departure_date = datetime.now()
             maintenance.save()

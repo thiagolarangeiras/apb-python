@@ -17,7 +17,7 @@ def perform():
         elif maintenance_count > 1 and st == str([EnumStatus.waitingMaintenance]) :
             print("\nEscolha um id:")
             for maintenance_list in maintenance_cpf:
-             print("\tCpf: {} / Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id)) 
+             print("\t|Cpf: {} | Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id)) 
             id = int(input("Id: "))
             rl_manutention(cpf,id)
             break
@@ -27,7 +27,7 @@ def perform():
 def rl_manutention(cpf,id):  
     maintenances =  manutentions.query.filter_by(cpf=cpf,status=str([EnumStatus.waitingMaintenance]))
     for maintenance in maintenances:
-        if maintenance.cpf == cpf or maintenance.id == id:
+        if maintenance.cpf == cpf and maintenance.id == id:
             maintenance.status = str([EnumStatus.onMaintenance])
             maintenance.save()
             print("A manutenção {} está sendo iniciada !!!".format(maintenance.id))
