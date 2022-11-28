@@ -14,13 +14,15 @@ def perform():
         if  maintenance_count == 1:
             rl_manutention(cpf,id_filter)
             break
+        
         elif maintenance_count > 1 and st == str([EnumStatus.waitingMaintenance]) :
             print("\nEscolha um id:")
             for maintenance_list in maintenance_cpf:
-             print("\t|Cpf: {} | Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id)) 
+             print("\t|Cpf: {} | Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id))  
             id = int(input("Id: "))
             rl_manutention(cpf,id)
             break
+        
         else:
             print("Não existe manutenção nesse status neste cpf!!!")
             break       

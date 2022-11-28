@@ -25,19 +25,7 @@ class manutentions(db):
     departure_date  = Column(DateTime, default=datetime.min)
     status  = Column(String())
 
-    def __repr__(self):
-        return f'{"Nome: "}{self.name}\n' \
-               f'{"Nº da manutenção: "}{self.id}\n' \
-               f'{"cpf: "}{self.cpf}\n' \
-               f'{"tipo do veiculo: "}{self.type_vehicle}\n' \
-               f'{"Marca: "}{self.brand}\n' \
-               f'{"Modelo: "}{self.model}\n' \
-               f'{"Cor: "}{self.color}\n' \
-               f'{"Valor: "}{self.value}\n' \
-               f'{"Descrição: "}{self.service_description}\n' \
-               f'{"Data de entrada: "}{self.entry_date}\n' \
-               f'{"Data de saida: "}{self.departure_date}\n' \
-               f'{"status: "}{self.status}'
+    
                
                 
 
