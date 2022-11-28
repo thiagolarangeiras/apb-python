@@ -15,14 +15,12 @@ def alter():
              color_fl =  maintenance_filter.color
              value_fl =  maintenance_filter.value
              service_description_fl =  maintenance_filter.service_description
-             status_fl =  maintenance_filter.status
-             
-                 
+             status_fl =  maintenance_filter.status        
         if  maintenance_count == 1:
             brand,model,color,value,service_description,status = menu_alter(brand_fl,model_fl,color_fl,value_fl,service_description_fl,status_fl)
             al_manutention(cpf,id_fl,brand,model,color,value,service_description,status)
             break
-        elif maintenance_count > 1  :
+        elif maintenance_count > 1:
             print("\nEscolha um id:")
             for maintenance_list in maintenance_cpf:
              print("\t|Cpf: {} | Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id)) 
@@ -34,8 +32,7 @@ def alter():
              color_fl =  maintenance_filterID.color
              value_fl =  maintenance_filterID.value
              service_description_fl =  maintenance_filterID.service_description
-             status_fl =  maintenance_filterID.status
-             
+             status_fl =  maintenance_filterID.status   
             brand,model,color,value,service_description,status = menu_alter(brand_fl,model_fl,color_fl,value_fl,service_description_fl,status_fl)
             al_manutention(cpf,id,brand,model,color,value,service_description,status)
             break

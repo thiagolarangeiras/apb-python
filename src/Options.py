@@ -18,6 +18,17 @@ class EnumStatus(Enum):
     onMaintenance =  'M'
     canceled = 'C'
     finished = 'F'
+    
+class EnumReports(Enum):
+    AllReportsMaintenance = 1
+    ReportsMaintenanceA = 2
+    ReportsMaintenanceM = 3
+    ReportsMaintenanceC = 4
+    ReportsMaintenanceF = 5
+    TotalValueRepots = 6
+    PeopleReports = 7
+    CloseReports = 8
+    
 
     #List used for storing the maintenace data: its a list of dicts => list(dict()) 
     # the dict shold fallow the MaintenanceData => name is HIGH because showld be a struct

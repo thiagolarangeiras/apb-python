@@ -6,9 +6,9 @@ from models.maintenance import register
 from models.pf_maintenance import perform
 from models.fl_maintenance import finalize
 from models.al_maintenance import alter
+from reports.report import report
 
-def report():
-    print("relatorio")
+
 
 
 Options = {
