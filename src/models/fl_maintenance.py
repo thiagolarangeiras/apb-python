@@ -23,6 +23,7 @@ def finalize():
             fl_manutention(cpf,id)
             break
         else:
+            print("Não existe manutenção nesse status neste cpf!!!")
             break       
     
 

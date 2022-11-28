@@ -37,6 +37,7 @@ def alter():
             al_manutention(cpf,id,brand,model,color,value,service_description,status)
             break
         else:
+            print("Não existe manutenção nesse status neste cpf!!!")
             break       
     
 

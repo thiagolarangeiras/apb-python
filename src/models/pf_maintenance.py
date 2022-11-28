@@ -22,6 +22,7 @@ def perform():
             rl_manutention(cpf,id)
             break
         else:
+            print("Não existe manutenção nesse status neste cpf!!!")
             break       
           
 def rl_manutention(cpf,id):  
