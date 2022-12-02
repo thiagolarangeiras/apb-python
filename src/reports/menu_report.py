@@ -1,4 +1,4 @@
-from Options import  EnumStatus,EnumReports
+from Options import EnumStatus, EnumReports
 
 def menu_reports()->EnumReports:
     printOptions()

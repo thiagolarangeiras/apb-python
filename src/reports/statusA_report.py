@@ -1,5 +1,5 @@
-from Options import  EnumStatus,EnumReports
-from database import manutentions
+from Options import EnumStatus, EnumReports
+from database import Maintenence
 
 def get_statusA():
     maintenances =  manutentions.query.filter_by(status=str([EnumStatus.waitingMaintenance]))

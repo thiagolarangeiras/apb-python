@@ -1,6 +1,5 @@
 from Options import EnumVeicleTypes, EnumStatus
-from database import manutentions
-
+from database import Maintenence
 
 def register():
     while True:
@@ -28,7 +27,7 @@ def register():
 
 def cd_manutention(name,cpf,type_vehicle,brand,model,color,value,service_description,status=str([EnumStatus.waitingMaintenance])):
     
-    manutention = manutentions(name=name,cpf=cpf,type_vehicle=type_vehicle
+    manutention = Maintenence(name=name,cpf=cpf,type_vehicle=type_vehicle
                                   ,brand=brand,model=model,color=color,value=value,
                                    service_description=service_description,status=status)
     manutention.save()

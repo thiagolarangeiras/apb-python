@@ -1,9 +1,9 @@
-from Options import  EnumStatus,EnumReports
-from database import manutentions
+from Options import EnumStatus, EnumReports
+from database import Maintenence
 
 def get_people():
     cpf = input("CPF: ")
-    maintenances =  manutentions.query.filter_by(cpf=cpf)
+    maintenances =  Maintenence.query.filter_by(cpf=cpf)
     for maintenance in maintenances:
        print(f'{"Nome: "}{maintenance.name}\n' \
         f'{"Nº da manutenção: "}{maintenance.id}\n' \

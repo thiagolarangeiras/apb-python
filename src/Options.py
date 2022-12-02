@@ -2,7 +2,7 @@ from enum import Enum
 
 class EnumOptions(Enum):
     Register = 1
-    Alter = 2
+    Update = 2
     Perform = 3
     Finalize = 4
     Report = 5

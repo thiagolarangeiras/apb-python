@@ -1,8 +1,8 @@
-from Options import  EnumStatus,EnumReports
-from database import manutentions
+from Options import EnumStatus, EnumReports
+from database import Maintenence
 
 def get_allValue():
-    maintenances =  manutentions.query.filter_by(status=str([EnumStatus.finished]))
+    maintenances =  Maintenence.query.filter_by(status=str([EnumStatus.finished]))
     value_list = []
     for maintenance in maintenances:
         print("Id:{} --> {}R$".format(maintenance.id,maintenance.value))

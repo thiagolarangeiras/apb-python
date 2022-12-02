@@ -1,8 +1,8 @@
-from Options import  EnumStatus,EnumReports
-from database import manutentions
+from Options import EnumStatus, EnumReports
+from database import Maintenence
 
 def get_statusM():
-    maintenances =  manutentions.query.filter_by(status=str([EnumStatus.onMaintenance]))
+    maintenances =  Maintenence.query.filter_by(status=str([EnumStatus.onMaintenance]))
     for maintenance in maintenances:
         print(f'{"Nome: "}{maintenance.name}\n' \
         f'{"Nº da manutenção: "}{maintenance.id}\n' \

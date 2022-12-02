@@ -1,4 +1,4 @@
-from Options import  EnumStatus,EnumReports
+from Options import  EnumStatus, EnumReports
 from reports.menu_report import menu_reports
 from reports.all_report import get_all
 from reports.statusA_report import get_statusA

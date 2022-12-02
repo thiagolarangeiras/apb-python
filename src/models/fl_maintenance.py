@@ -1,11 +1,11 @@
 from Options import  EnumStatus
-from database import manutentions
+from database import Maintenence
 from datetime import datetime
 
 def finalize():
     while True:
         cpf = input("CPF: ")
-        maintenance_cpf = manutentions.query.filter_by(cpf=cpf,status=str([EnumStatus.onMaintenance]))
+        maintenance_cpf = Maintenence.query.filter_by(cpf=cpf,status=str([EnumStatus.onMaintenance]))
         maintenance_count = maintenance_cpf.count()
         
         for maintenance_filter in maintenance_cpf:
@@ -28,7 +28,7 @@ def finalize():
     
 
 def fl_manutention(cpf,id):
-    maintenances = manutentions.query.filter_by(cpf=cpf,status=str([EnumStatus.onMaintenance]))   
+    maintenances = Maintenence.query.filter_by(cpf=cpf,status=str([EnumStatus.onMaintenance]))   
    
     for maintenance in maintenances:
         if maintenance.cpf == cpf and maintenance.id == id:
