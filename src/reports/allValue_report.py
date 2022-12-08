@@ -11,8 +11,12 @@ def get_allValue():
             'Valor': maintenance.value
                 }
         maintenances_list.append(dict)
-
-    df_maintenances = pd.DataFrame(maintenances_list)
     
+    if len(maintenances_list) <= 0:
+        print(f"Nenhuma Manutenção encontrada")
+        return
+    
+    df_maintenances = pd.DataFrame(maintenances_list)
+
     print(df_maintenances)
     print("\nTotal:{}R$\n".format(sum(df_maintenances['Valor'])))
