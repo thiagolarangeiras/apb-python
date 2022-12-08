@@ -1,10 +1,10 @@
 from Options import EnumStatus, EnumReports
 from database import Maintenence
+import pandas as pd
 
 def get_allValue():
     maintenances =  Maintenence.query.filter_by(status=str([EnumStatus.finished]))
-    value_list = []
-    for maintenance in maintenances:
-        print("Id:{} --> {}R$".format(maintenance.id,maintenance.value))
-        value_list.append(maintenance.value)    
-    print("\nTotal:{}R$\n".format(sum(value_list)))
+    df_maintenances = pd.DataFrame(maintenances)
+    df_allValue['ID'] = df_maintenances['id']
+    df_allValue['Valor'] = df_maintenances['value']
+    print("\nTotal:{}R$\n".format(sum(df_allValue['Valor'])))
