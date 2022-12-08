@@ -2,6 +2,7 @@ from Options import  EnumStatus
 from database import Maintenence
 
 def update():
+    """Função para alterar os valores de alguma manutenção"""
     cpf = input("CPF: ")
     maintenances = Maintenence.query.filter_by(cpf=cpf)
     if maintenances.count() == 1:
@@ -9,6 +10,7 @@ def update():
         #saveValue(maintenances[0])
         maintenances.save()
     
+    #se existir mais de uma manuntenção com o mesmo CPF vai perguntar qual delas em especifico
     elif maintenances.count() > 1:
         print("\nEscolha um id:")
         for maintenance in maintenances:
@@ -23,7 +25,8 @@ def update():
     else:
         print("Não existe manutenção nesse status neste cpf!!!")       
 
-def changeValue(maintenance):   
+def changeValue(maintenance):
+    """Recebe um valor/modelo do Tipo Maintenence por referencia, pergunta ao usuario qual valor ele quer trocar, e altera esse valor"""   
     print("Escolha uma opção")
     print("Detalhes do veiculo:")    
     print("\t1 - Alterar marca.")
@@ -53,7 +56,9 @@ def changeValue(maintenance):
             maintenance[0].status = str([EnumStatus(input("Tipo do status(Esperando manutenção: A | Em manutenção: M | Cancelada: C | Finalizada: F): ").upper())])
             break
 
+#-------------------------------------------------------------------------------------
 def saveValue(maintenance):
+    """Função usada para salvar os valores, não é mais usada!"""
     maintenances = Maintenence.query.filter_by(cpf=maintenance.cpf, id=maintenance.id)   
     maintenances[0].save()
     print(f"A manutenção {maintenance.id} está sendo Atualizada !!!")

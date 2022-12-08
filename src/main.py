@@ -2,14 +2,14 @@
 from Options import EnumOptions
 
 from menu import menu
-from models.maintenance import register 
-from models.pf_maintenance import perform
-from models.fl_maintenance import finalize
+from maintenance.insert import insert 
+from maintenance.perform import perform
+from maintenance.finalize import finalize
 from maintenance.update import update
 from reports.report import report
 
 Options = {
-    EnumOptions.Register: register, 
+    EnumOptions.Register: insert, 
     EnumOptions.Update: update,
     EnumOptions.Perform: perform,
     EnumOptions.Finalize: finalize,
