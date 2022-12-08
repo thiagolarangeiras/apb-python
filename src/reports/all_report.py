@@ -4,17 +4,24 @@ import pandas as pd
 
 def get_all():
     maintenances =  Maintenence.query.all()
-    df_maintenances = pd.DataFrame(maintenances)
-    df_maintenances.rename({'id': 'ID',
-                            'name': 'Nome',
-                            'cpf': 'CPF',
-                            'type_vehicle': 'Tipo do veiculo',
-                            'brand': 'Marca',
-                            'model': 'Modelo',
-                            'color': 'Cor',
-                            'value': 'Valor',
-                            'service_description': 'Descrição',
-                            'entry_date': 'Data de entrada',
-                            'departure_date': 'Data de saída',
-                            'status': 'Status'}, axis = 1, inplace = True)
+    maintenances_list = []
+    
+    for maintenance in maintenances:
+        dict = {
+            'ID': maintenance.id,
+            'Nome': maintenance.name,
+            'CPF': maintenance.cpf,
+            'Tipo do veiculo': maintenance.type_vehicle,
+            'Marca': maintenance.brand,
+            'Modelo': maintenance.model,
+            'Cor': maintenance.color,
+            'Valor': maintenance.value,
+            'Descrição': maintenance.service_description,
+            'Data de entrada': maintenance.entry_date,
+            'Data de saída': maintenance.departure_date,
+            'Status': maintenance.status
+                }
+        maintenances_list.append(dict)
+
+    df_maintenances = pd.DataFrame(maintenances_list)
     print(df_maintenances)
