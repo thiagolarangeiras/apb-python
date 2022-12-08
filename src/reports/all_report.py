@@ -1,6 +1,7 @@
 from Options import  EnumStatus,EnumReports
 from database import manutentions
 
+
 def get_all():
     maintenances =  manutentions.query.all()
     for maintenance in maintenances:
@@ -16,3 +17,5 @@ def get_all():
         f'{"Data de entrada: "}{maintenance.entry_date}\n' \
         f'{"Data de saida: "}{maintenance.departure_date}\n' \
         f'{"status: "}{maintenance.status}\n')
+       
+

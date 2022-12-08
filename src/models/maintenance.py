@@ -18,7 +18,7 @@ def register():
                 raise Exception
             cd_manutention(name,cpf,type_vehicle,brand,model,color,value,service_description)
             break
-        except:
+        except Exception:
             print("\nAviso dados invalidos no ultimo campo inserido!\n")     
           
     return True
@@ -32,10 +32,8 @@ def cd_manutention(name,cpf,type_vehicle,brand,model,color,value,service_descrip
                                   ,brand=brand,model=model,color=color,value=value,
                                    service_description=service_description,status=status)
     manutention.save()
-        
-    print(' MANUTENÇÃO CADASTRADA!')
-    print(manutention)
-    print('-' * 90)
+    print('\nMANUTENÇÃO CADASTRADA!')
+    print('-' * 20)
     return True
  
  

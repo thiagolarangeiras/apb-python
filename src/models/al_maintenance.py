@@ -4,46 +4,51 @@ from database import manutentions
 
 def alter():
     while True:
-        cpf = input("CPF: ")
-        maintenance_cpf = manutentions.query.filter_by(cpf=cpf)
-        maintenance_count = maintenance_cpf.count()
-        
-        for maintenance_filter in maintenance_cpf:
-             id_fl = maintenance_filter.id 
-             brand_fl = maintenance_filter.brand
-             model_fl =  maintenance_filter.model
-             color_fl =  maintenance_filter.color
-             value_fl =  maintenance_filter.value
-             service_description_fl =  maintenance_filter.service_description
-             status_fl =  maintenance_filter.status   
-                  
-        if  maintenance_count == 1:
-            brand,model,color,value,service_description,status = menu_alter(brand_fl,model_fl,color_fl,value_fl,service_description_fl,status_fl)
-            al_manutention(cpf,id_fl,brand,model,color,value,service_description,status)
-            break
-        
-        elif maintenance_count > 1:
-            print("\nEscolha um id:")
-            for maintenance_list in maintenance_cpf:
-             print("\t|Cpf: {} | Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id)) 
-             
-            id = int(input("Id: "))
-            maintenance_id = manutentions.query.filter_by(cpf=cpf,id=id)
-            for maintenance_filterID in maintenance_id:
-             brand_fl = maintenance_filterID.brand
-             model_fl =  maintenance_filterID.model
-             color_fl =  maintenance_filterID.color
-             value_fl =  maintenance_filterID.value
-             service_description_fl =  maintenance_filterID.service_description
-             status_fl =  maintenance_filterID.status
+        try:
+            cpf = input("CPF: ")
+            maintenance_cpf = manutentions.query.filter_by(cpf=cpf)
+            maintenance_count = maintenance_cpf.count()
+            
+            for maintenance_filter in maintenance_cpf:
+                id_fl = maintenance_filter.id 
+                brand_fl = maintenance_filter.brand
+                model_fl =  maintenance_filter.model
+                color_fl =  maintenance_filter.color
+                value_fl =  maintenance_filter.value
+                service_description_fl =  maintenance_filter.service_description
+                status_fl =  maintenance_filter.status   
+                    
+            if  maintenance_count == 1:
+                brand,model,color,value,service_description,status = menu_alter(brand_fl,model_fl,color_fl,value_fl,service_description_fl,status_fl)
+                al_manutention(cpf,id_fl,brand,model,color,value,service_description,status)
+                break
+            
+            elif maintenance_count > 1:
+                print("\nEscolha um id:")
+                for maintenance_list in maintenance_cpf:
+                    print("\t'--Cpf: {} | Id da manutenção: {}".format(maintenance_list.cpf, maintenance_list.id)) 
                 
-            brand,model,color,value,service_description,status = menu_alter(brand_fl,model_fl,color_fl,value_fl,service_description_fl,status_fl)
-            al_manutention(cpf,id,brand,model,color,value,service_description,status)
-            break
-        else:
+                id = int(input("Id: "))
+                maintenance_id = manutentions.query.filter_by(cpf=cpf,id=id)
+                for maintenance_filterID in maintenance_id:
+                    brand_fl = maintenance_filterID.brand
+                    model_fl =  maintenance_filterID.model
+                    color_fl =  maintenance_filterID.color
+                    value_fl =  maintenance_filterID.value
+                    service_description_fl =  maintenance_filterID.service_description
+                    status_fl =  maintenance_filterID.status
+                    
+                brand,model,color,value,service_description,status = menu_alter(brand_fl,model_fl,color_fl,value_fl,service_description_fl,status_fl)
+                al_manutention(cpf,id,brand,model,color,value,service_description,status)
+                break
+            else:
+                print("Não existe manutenção nesse status neste cpf!!!")
+                break       
+        except Exception:
             print("Não existe manutenção nesse status neste cpf!!!")
-            break       
-    
+
+            
+            
 
 def al_manutention(cpf,id,brand,model,color,value,service_description,status):
     maintenances = manutentions.query.filter_by(cpf=cpf)   
@@ -58,7 +63,6 @@ def al_manutention(cpf,id,brand,model,color,value,service_description,status):
             maintenance.status = status
             maintenance.save()
             print("A manutenção {} está sendo Atualizada !!!".format(maintenance.id))
-            print(maintenance)
             return True 
         
 def menu_alter(brand_fl,model_fl,color_fl,value_fl,service_description_fl,status_fl):
@@ -69,9 +73,9 @@ def menu_alter(brand_fl,model_fl,color_fl,value_fl,service_description_fl,status
         print(
         """Escolha uma opção :
     Detalhes do veiculo:    
-    \t1 - Alterar marca.
-    \t2 - Alterar modelo.
-    \t3 - Alterar cor.
+    \t'--1 - Alterar marca.
+    \t'--2 - Alterar modelo.
+    \t'--3 - Alterar cor.
     4 – Alterar valor do orçamento.
     5 - Alterar descrição do serviço. 
     6 - Alterar status.
