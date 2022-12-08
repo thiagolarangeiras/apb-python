@@ -3,7 +3,7 @@ from database import Maintenence
 import pandas as pd
 
 def get_statusA():
-    maintenances =  manutentions.query.filter_by(status=str([EnumStatus.waitingMaintenance]))
+    maintenances =  Maintenence.query.filter_by(status=str([EnumStatus.waitingMaintenance]))
     maintenances_list = []
     
     for maintenance in maintenances:
